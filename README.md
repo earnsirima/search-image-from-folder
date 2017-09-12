@@ -1,4 +1,4 @@
-## search-image-from-folder
+## search-image-from-folder (.JPG)
 
 # get start project
 ```sh
