@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Image</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="page-wrapper">
+            <h2>Search image from folder</h2>
+            <input id="mySearch" type="text" placeholder="Search for..." name="">
+            <button id="launchStyledModal" class="button" type="submit" onclick="myFunction()" data-toggle="modal" data-target="#myModal">search</button>
+        </div>
+
+        <dialog id="styledModal">
+            <div id="demo"></div>
+            <button id="btn" class="close" type="button">CLOSE</button>
+        </dialog>
+
+        <dialog id="modal">
+            <p>Not Found.</p>
+            <button id="btnM" class="close" type="button">CLOSE</button>
+        </dialog>
+
+        <script>
+            function myFunction() {
+                var xhttp = new XMLHttpRequest();
+                var x = document.getElementById("mySearch").value;
+
+                // Get the modal image
+                var styledModal = document.getElementById('styledModal');
+                var images = "<img src='img/" + x + ".jpg' width='900' height='900' alt='" + x + "''>";
+
+                // Get modal
+                var styledModalBtn = document.getElementById('launchStyledModal');
+                var closeBtns = document.querySelectorAll('.close');
+
+                var modal = document.getElementById('modal'); // Get value null
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        styledModal.showModal();
+                        document.getElementById("demo").innerHTML = images;
+
+                        for (var i = 0; i < closeBtns.length; i++) {
+                            closeBtns[i].addEventListener('click', function(e) {
+                                this.parentNode.close();
+                            });
+                        }
+                    } else if (this.readyState == 4 && this.status == 404) {
+                        modal.showModal();
+
+                        for (var i = 0; i < closeBtns.length; i++) {
+                            closeBtns[i].addEventListener('click', function(e) {
+                                this.parentNode.close();
+                            });
+                        }
+                    }
+                };
+                xhttp.open("GET", "img/" + x + ".jpg", true);
+                xhttp.send();
+            }
+        </script>
+    </div>
+</body>
+
+</html>
