@@ -7,5 +7,6 @@
 
 # Download XAMPP
 ```sh
-  run xampp
+  start Apache
+  start MySQL
 ```
