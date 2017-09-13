@@ -1,4 +1,5 @@
 body {
+    background-image: url('../img/back/search.jpg');
     background-size: 100%;
 }
 
@@ -7,7 +8,7 @@ body {
 }
 
 h2 {
-    color: #FFFFFF;
+    color: #000000;
     font-size: 50px;
 }
 
